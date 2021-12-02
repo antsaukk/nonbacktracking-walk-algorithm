@@ -48,8 +48,10 @@ public:
 		assert(!empty());
 		set_type(TypeMatrix::adjacency);
 		for (size_t i = 0; i < nodes.size(); i+=2) {
-			matrix_[index(ind(nodes[i]), ind(nodes[i+1]))] = unity_;
-			matrix_[index(ind(nodes[i+1]), ind(nodes[i]))] = unity_;
+			M y = ind(nodes[i]);
+			M x = ind(nodes[i+1]);
+			set_v(y, x, unity_); 
+			set_v(x, y, unity_);
 		}
 	}
 
