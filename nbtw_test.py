@@ -25,7 +25,7 @@ def nbtw(A, n, k):
     else:
         return recursive(A, n, k+1)
 
-def test():
+def test_hub():
     At = np.array([
     [0,1,1,1,1,1,1,1,1],
     [1,0,0,0,0,0,0,0,0],
