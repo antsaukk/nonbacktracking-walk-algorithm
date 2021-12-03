@@ -58,6 +58,15 @@ void test_exp1() {
 	ASSERT_EQUAL(r2, vector({3,0,1,1, 0,1,1,1, 1,1,2,1, 1,1,1,2}));
 }
 
+/*void test_substract_diagonal() {
+	SpectralGraph<int, 3> g(3);
+	vector<int> v1 = {1, 2, 1, 3, 2, 3};
+	g.adjacency_matrix(v1);
+
+	g.delta_matrix();
+
+}*/
+
 void test_nbtw() {
 	SpectralGraph<int, 3> g(3);
 	vector<int> v1 = {1, 2, 1, 3, 2, 3};

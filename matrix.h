@@ -55,6 +55,11 @@ public:
 		}
 	}
 
+	void identity() {
+		for (size_t y = 0; y < get_size(); y++)
+			set_v(y, y, 1);
+	}
+
 	M sum_row(M start, M end) {
 		M sum = 0u;
 		for(int i = start; i < end; i++) {

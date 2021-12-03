@@ -20,7 +20,6 @@ public:
 	void adjacency_matrix(vector<T>& nodes);
 	void delta_matrix();
 	void pA_2();
-	void substract_diagonal();
 
 	const Matrix<T, N>& getp2_A();
 	const Matrix<T, N>& get_A();
@@ -64,13 +63,8 @@ void SpectralGraph<T, N>::pA_2() {
 		A2.clear();
 		A2.exp2(A);
 	}
-	
 }
 
-template <typename T, size_t N>
-void SpectralGraph<T, N>::substract_diagonal() {
-
-}
 
 template <typename T, size_t N>
 const Matrix<T, N>& SpectralGraph<T, N>::getp2_A() {
@@ -86,8 +80,8 @@ const Matrix<T, N>& SpectralGraph<T, N>::get_A() {
 
 template <typename T, size_t N>
 void SpectralGraph<T, N>::nbtw_naive(size_t n, size_t k) {
-	Matrix<T, N> pA1 = get_A();//
-	Matrix<T, N> pA2 = getp2_A();//
+	Matrix<T, N> At = get_A();
+	Matrix<T, N> p1 = getp2_A();
 
-
+	delta_matrix();
 }
