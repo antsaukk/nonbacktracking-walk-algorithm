@@ -1,8 +1,12 @@
 import numpy as np
 
+def identity(A):
+    return np.identity(A.shape[0])
+
 def delta(A):
-    delta = np.identity(A.shape[0])
-    delta[np.diag_indices_from(delta)] = A
+    d = np.sum(A, axis=1)
+    delta = identity(A)
+    delta[np.diag_indices_from(delta)] = d
     return delta
 
 
@@ -10,9 +14,9 @@ def recursive(A, n, k):
     assert(k >= 1)
     p1 = nbtw(A, n, 2)
     p2 = nbtw(A, n, 1)
-    Delta = delta(np.sum(A, axis=1))
+    Id = identity(A) - delta(A)
     for _ in range(3, k):
-        pr = np.dot(A, p1) + np.dot(np.identity(A.shape[0]) - Delta, p2)
+        pr = np.dot(A, p1) + np.dot(Id, p2)
         p2 = p1
         p1 = pr
     return p1
@@ -21,7 +25,7 @@ def nbtw(A, n, k):
     if k==1:
         return A
     elif k==2:
-        return np.dot(A, A) - delta(np.sum(A, axis=1))
+        return np.dot(A, A) - delta(A)
     else:
         return recursive(A, n, k+1)
 
