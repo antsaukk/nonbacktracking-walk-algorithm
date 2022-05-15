@@ -31,7 +31,6 @@ public:
 	type_(TypeMatrix::EMPTY) 
 	{
 		allocate(ny_, nx_);
-		//cout << "\nDefault const called\n";
 	}
 
 	//copy constructor
@@ -43,11 +42,10 @@ public:
 	type_(mat.get_type())
 	{
 		memcpy(matrix_, mat.data(), sizeof(M) * mat.ny_ * mat.nx_);
-		//cout << "\nCopy const called\n";
 	}
 
 	//copy assignment
-	void operator=(const Matrix<M, NY, NX>& mat)
+	void operator=(Matrix<M, NY, NX>& mat)
 	{	
 		ny_   = mat.ny_;
 		nx_   = mat.nx_;
@@ -55,7 +53,6 @@ public:
 		type_   = mat.type_;
 		matrix_ = new M[mat.ny_ * mat.nx_];
 		memcpy(matrix_, mat.data(), sizeof(M) * mat.ny_ * mat.nx_);
-		//cout << "\nCopy ass called\n";
 	}
 
 	//move constructor
@@ -70,7 +67,6 @@ public:
 		mat.nx_   = 0;
 		mat.matrix_ = nullptr;
 		mat.type_	= TypeMatrix::EMPTY;
-		//cout << "\nMove const called\n";
 	}
 
 	//move assigment
@@ -83,7 +79,6 @@ public:
 		swap(matrix_, mat.matrix_);
 		swap(unity_, mat.unity_);
 		swap(type_, mat.type_);
-		//cout << "\nMove ass called\n";
 	}
 
 	//destructor

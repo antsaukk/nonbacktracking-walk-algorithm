@@ -9,7 +9,7 @@
 
 using namespace std;
 
-template <typename T, size_t N>
+template <typename T, size_t NY, size_t NX>
 class NBTW {
 public:
 	explicit NBTW(size_t asize, 
@@ -38,13 +38,6 @@ public:
 private:
 	size_t 			adjacence_size_;
 	size_t 			     nbt_walks_;
-	Matrix<T, N> 			  nbtw_;
-	SizeHandler<N>    size_handler_;
+	Matrix<T, NY, NX> 			  nbtw_;
+	SizeHandler<NY, NX>    size_handler_;
 };
-
-
-template <typename T, size_t N>
-void delta_matrix(const Matrix<T, N>& matrix);
-
-template <typename T, size_t N>
-void adjacency_matrix(vector<T>& nodes);

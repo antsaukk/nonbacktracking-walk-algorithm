@@ -2,11 +2,11 @@
 
 using namespace std;
 
-template <size_t N>
+template <size_t NY, size_t NX>
 struct SizeHandler {
 	SizeHandler() : 
-	nx_(N), 
-	ny_(N), 
+	nx_(NY), 
+	ny_(NX), 
 	nny_(0) 
 	{
 		pad();
