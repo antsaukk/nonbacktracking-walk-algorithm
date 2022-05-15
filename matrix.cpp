@@ -1,32 +1,45 @@
 //#include "matrix.h"
 
-template<typename M, size_t N>
-void Matrix<M, N>::allocate(size_t n)
+template <typename M, size_t NY, size_t NX>
+void Matrix<M, NY, NX>::allocate(size_t ny, size_t nx)
 {
-	matrix_ = new M[n * n];
+	matrix_ = new M[ny * nx];
 	clear(); // ?
 }
 
-template<typename M, size_t N>
-void Matrix<M, N>::clear() 
+template <typename M, size_t NY, size_t NX>
+void Matrix<M, NY, NX>::clear() 
 {
-	for (size_t y = 0; y < get_size(); y++) {
-		for (size_t x = 0; x < get_size(); x++) {
+	for (size_t y = 0; y < ny_; y++) {
+		for (size_t x = 0; x < nx_; x++) {
 			set_v(y, x, 0);
 		}
 	}
 }
 
-template<typename M, size_t N>
-inline void Matrix<M, N>::identity()
+template <typename M, size_t NY, size_t NX>
+void Matrix<M, NY, NX>::fill(const M* data, size_t dsize) 
+{
+	assert(dsize == matrix_length());
+	for (size_t y = 0; y < ny_; y++) {
+		for (size_t x = 0; x < nx_; x++) {
+			M val = data[index(y, x)]; 
+			set_v(y, x, val);
+		}
+	}
+	type_ = TypeMatrix::NONEMPTY;
+}
+
+/*template <typename M, size_t NY, size_t NX>
+inline void Matrix<M, NY, NX>::identity()
 {
 	for (size_t y = 0; y < get_size(); y++){
 		set_v(y, y, 1);
 	}
-}
+}*/
 
-template<typename M, size_t N>
-inline M Matrix<M, N>::sum_row(M start, M end)
+template <typename M, size_t NY, size_t NX>
+inline M Matrix<M, NY, NX>::sum_row(M start, M end)
 {
 	M sum = 0u;
 	for(int i = start; i < end; i++) {
@@ -35,74 +48,80 @@ inline M Matrix<M, N>::sum_row(M start, M end)
 	return sum;
 }
 
-template<typename M, size_t N>
-inline const M* Matrix<M, N>::data() const
+template <typename M, size_t NY, size_t NX>
+inline const M* Matrix<M, NY, NX>::data() const
 {
 	return matrix_;
 }
 
-template<typename M, size_t N>
-inline const M Matrix<M, N>::getv(const size_t y, const size_t x) const 
+template <typename M, size_t NY, size_t NX>
+inline const M Matrix<M, NY, NX>::getv(const size_t y, const size_t x) const 
 {  
 	return matrix_[index(y, x)]; 
 }
 
-template<typename M, size_t N>
-inline void Matrix<M, N>::set_v(size_t y, size_t x, M val)
+template <typename M, size_t NY, size_t NX>
+inline void Matrix<M, NY, NX>::set_v(size_t y, size_t x, M val)
 { 
 	matrix_[index(y, x)] = val;
 }
 
-template<typename M, size_t N>
-inline void Matrix<M, N>::add_v(size_t y, size_t x, M val)
+template <typename M, size_t NY, size_t NX>
+inline void Matrix<M, NY, NX>::add_v(size_t y, size_t x, M val)
 { 
 	matrix_[index(y, x)] += val;
 }
 
-template<typename M, size_t N>
-inline const size_t Matrix<M, N>::get_size() const 
+template <typename M, size_t NY, size_t NX>
+inline const size_t Matrix<M, NY, NX>::get_ny() const 
 { 
-	return size_;
+	return ny_;
 }
 
-template<typename M, size_t N>
-inline const size_t Matrix<M, N>::index(size_t y, size_t x)  const 
+template <typename M, size_t NY, size_t NX>
+inline const size_t Matrix<M, NY, NX>::get_nx() const 
+{ 
+	return nx_;
+}
+
+template <typename M, size_t NY, size_t NX>
+inline const size_t Matrix<M, NY, NX>::index(size_t y, size_t x)  const 
 {
-	return x + y * get_size();
+	return x + y * nx_;
 }
 
-template<typename M, size_t N>
-inline const size_t Matrix<M, N>::ind(size_t i) const 
+template <typename M, size_t NY, size_t NX>
+inline const size_t Matrix<M, NY, NX>::ind(size_t i) const 
 { 
 	return i - 1;
 }
 
-template<typename M, size_t N>
-inline const size_t Matrix<M, N>::matrix_length() const 
+template <typename M, size_t NY, size_t NX>
+inline const size_t Matrix<M, NY, NX>::matrix_length() const 
 { 
-	return get_size()*get_size();
+	return ny_*nx_;
 }
 
-template<typename M, size_t N>
-inline M Matrix<M, N>::rowFirst(size_t index)
+/*template <typename M, size_t NY, size_t NX>
+inline M Matrix<M, NY, NX>::rowFirst(size_t index)
 { 
 	return index*get_size();
 }
 
-template<typename M, size_t N>
-inline M Matrix<M, N>::rowLast(size_t index)
+template <typename M, size_t NY, size_t NX>
+inline M Matrix<M, NY, NX>::rowLast(size_t index)
 { 
 	return index*get_size() + get_size();
-}
+}*/
 
-template<typename M, size_t N>
-inline const TypeMatrix Matrix<M, N>::get_type() const
+template <typename M, size_t NY, size_t NX>
+inline const TypeMatrix Matrix<M, NY, NX>::get_type() const
 { 
 	return type_;
 }
 
-template<typename M, size_t N>
-inline bool Matrix<M, N>::empty()
+template <typename M, size_t NY, size_t NX>
+inline bool Matrix<M, NY, NX>::empty()
 { 
-	return (size_ == 0);
+	return (get_type() == TypeMatrix::EMPTY);
 }

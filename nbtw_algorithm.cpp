@@ -44,4 +44,3 @@ void NBTW<T, N>::HigherOrderNBTW()
 {	
 	
 }
-
