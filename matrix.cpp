@@ -1,4 +1,4 @@
-#include "matrix.h"
+//#include "matrix.h"
 
 template<typename M, size_t N>
 void Matrix<M, N>::allocate(size_t n)
