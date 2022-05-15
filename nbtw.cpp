@@ -1,11 +1,11 @@
 #include "profile.h" 
 #include "test_runner.h"
-#include "nbtw.h"
+#include "nbtw_algorithm.h"
 
-#include "nbtw_tests.cpp"
-#include "matrix_tests.cpp"
+/*#include "nbtw_tests.cpp"
+#include "matrix_tests.cpp"*/
 
-void matrix_tests(TestRunner tr) {
+/*void matrix_tests(TestRunner tr) {
 	RUN_TEST(tr, test_mat_mul);
 	RUN_TEST(tr, test_mat_mul1);
 	RUN_TEST(tr, test_exp2); 
@@ -20,11 +20,11 @@ void spectral_tests(TestRunner tr) {
 	RUN_TEST(tr, test_exp);
 	RUN_TEST(tr, test_exp1);
 	RUN_TEST(tr, test_nbtw);
-}
+}*/
 
 int main() {
-	TestRunner tr;
+	/*TestRunner tr;
 	matrix_tests(tr);
-	spectral_tests(tr);
+	spectral_tests(tr);*/
 	return 0;
 }

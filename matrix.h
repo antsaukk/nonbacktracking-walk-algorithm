@@ -10,7 +10,12 @@
 
 using namespace std;
 
-enum TypeMatrix { empty, adjacency, mexp2, pA };
+enum TypeMatrix { 
+	EMPTY,
+	ADJACENCY,
+	ADJACENCY_SQUARED,
+	NBTW_ADJACENCY 
+};
 
 template <typename M, size_t N>
 class Matrix {
@@ -19,7 +24,8 @@ public:
 	size_(N),
 	matrix_(nullptr),
 	unity_(1u),
-	type_(TypeMatrix::empty) {
+	type_(TypeMatrix::EMPTY) 
+	{
 		allocate(size_);
 	}
 
@@ -31,7 +37,9 @@ public:
 		memcpy(matrix_, mat.data(), sizeof(M) * mat.get_size() * mat.get_size());
 	}
 
-	~Matrix() { kill(); }
+	~Matrix() { 
+		kill(); 
+	}
 
 	void clear(){
 		for (size_t y = 0; y < get_size(); y++)
