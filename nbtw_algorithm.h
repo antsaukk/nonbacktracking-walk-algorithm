@@ -9,8 +9,7 @@
 
 using namespace std;
 
-template <typename T,
-		  size_t N>
+template <typename T, size_t N>
 class NBTW {
 public:
 	explicit NBTW(size_t asize, 
