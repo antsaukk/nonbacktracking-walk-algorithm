@@ -7,7 +7,6 @@ struct SizeHandler {
 	SizeHandler() : 
 	nx_(N), 
 	ny_(N), 
-	padding_value_(8),
 	nny_(0) 
 	{
 		pad();
@@ -27,8 +26,8 @@ struct SizeHandler {
 	inline size_t horizontal_axis_length() const { return nx_; }
 
 private:
-	size_t 				 	    nx_;
-	size_t 				 	    ny_;
-	static const int padding_value_;
-	size_t 					   nny_;		
+	size_t 				 	        nx_;
+	size_t 				 	        ny_;
+	size_t 					       nny_;
+	static const int padding_value_ = 8;	
 };

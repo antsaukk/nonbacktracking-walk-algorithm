@@ -20,7 +20,7 @@ void NBTW<T, N>::run()
 	}
 }
 
-// all method fill up nbtw_ 
+// all methods fill up nbtw_ 
 template <typename T, size_t N>
 void NBTW<T, N>::ZerothOrderNBTW()
 {	
@@ -44,17 +44,4 @@ void NBTW<T, N>::HigherOrderNBTW()
 {	
 	
 }
-
-template <typename T, size_t N>
-void delta_matrix(const Matrix<T, N>& matrix)  {
-	assert(!matrix.empty());
-
-	/*delta.resize(get_size());
-	for(size_t i = 0; i < size_; i++) {
-		delta[i] = A.sum_row(A.rowFirst(i), A.rowLast(i));
-	}*/
-}
-
-template <typename T, size_t N>
-void adjacency_matrix(vector<T>& nodes) {}
 
