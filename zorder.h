@@ -54,6 +54,6 @@ struct ZOrder {
 private:
 	size_t n_;
 	Z_order_index_sequence z_curve_;
-	const int maskA = 0x55555555; 
-	const int maskB = 0xAAAAAAAA;
+	static const int maskA = 0x55555555; 
+	static const int maskB = 0xAAAAAAAA;
 };
