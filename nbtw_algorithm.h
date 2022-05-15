@@ -4,23 +4,34 @@
 #include "size_handler.h"
 #include "zorder.h"
 
+#include <assert.h>
 #include <numeric>
 
 using namespace std;
 
 template <typename T,
 		  size_t N>
-class NBTW_Algorithm {
+class NBTW {
 public:
-	explicit NBTW_Algorithm(size_t asize, 
-							size_t nbt_walks) : 
+	explicit NBTW(size_t asize, 
+				  size_t nbt_walks) : 
 	adjacence_size_(asize), 
 	nbt_walks_(nbt_walks) 
 	{
 		if (adjacence_size_ > N) throw invalid_argument("Sizes must be equal.");
 	}
 
-	~NBTW_Algorithm() {}
+	~NBTW() {}
+
+	void run();
+
+	void ZerothOrderNBTW();
+
+	void FirstOrderNBTW();
+
+	void SecondOrderNBTW();
+
+	void HigherOrderNBTW();
 
 	inline size_t get_size() const 	 	{ return adjacence_size_; }
 
@@ -34,7 +45,7 @@ private:
 
 
 template <typename T, size_t N>
-void delta_matrix(const Matrix<T, N> matrix);
+void delta_matrix(const Matrix<T, N>& matrix);
 
 template <typename T, size_t N>
 void adjacency_matrix(vector<T>& nodes);
