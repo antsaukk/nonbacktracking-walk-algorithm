@@ -13,15 +13,15 @@ struct ZOrder {
 	}
 
 	void generate_Zorder() {
-		
+
 		#pragma omp parallel for schedule(static, 1)
 	 	for (size_t ia = 0; ia < get_size(); ia++) {
-	    	for (size_t ja = ia; ja < get_size(); ja++) { 
-	        	size_t ija    = generate_Z_Key(ia, ja);
-				size_t ind 	  = sequence_index(ia, ja);
-	        	z_curve_[ind] = std::make_tuple(ija, ia, ja);
-	    	}
-		}
+	 		for (size_t ja = ia; ja < get_size(); ja++) { 
+	 			size_t ija    = generate_Z_Key(ia, ja);
+	 			size_t ind 	  = sequence_index(ia, ja);
+	 			z_curve_[ind] = std::make_tuple(ija, ia, ja);
+	 		}
+	 	}
 		
 		std::sort(z_curve_.begin(), z_curve_.end());
 	}
