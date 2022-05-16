@@ -32,12 +32,14 @@ public:
 
 	void HigherOrderNBTW();
 
+	inline void feed_data(T* data); //function fills adjmatrix
+
 	inline size_t get_size() const 	 	{ return adjacence_size_; }
 
 	inline size_t get_nbt_walks() const { return nbt_walks_; }
 private:
-	size_t 			adjacence_size_;
-	size_t 			     nbt_walks_;
-	Matrix<T, NY, NX> 		  nbtw_;
-	SizeHandler<NY, NX>    size_handler_;
+	size_t 			  adjacence_size_;
+	size_t 			       nbt_walks_;
+	Matrix<T, NY, NX> 				nbtw_;
+	SizeHandler<NY, NX> size_handler_;
 };

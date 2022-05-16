@@ -6,7 +6,7 @@
 typedef float float4_t __attribute__((vector_size(16)));
 typedef float float8_t __attribute__((vector_size(32)));
 typedef double double4_t __attribute__((vector_size(32)));
-typedef int int8_vt __attribute__((vector_size(8)));
+typedef int int8_vt __attribute__((vector_size(32)));
 
 constexpr float4_t float4_0 = {0, 0, 0, 0};
 constexpr float8_t float8_0 = {0, 0, 0, 0, 0, 0, 0, 0};

@@ -1,5 +1,8 @@
 #pragma once
 
+#include "vectorization.h"
+#include "util.h"
+
 #include <utility>
 #include <cassert>
 #include <stdexcept>
@@ -10,6 +13,8 @@
 #include <omp.h>
 
 using namespace std;
+
+// USE SEPARATE STRUCTURE WHICH WILL STORE AVX DATA
 
 enum TypeMatrix { 
 	EMPTY,
@@ -44,15 +49,14 @@ public:
 		memcpy(matrix_, mat.data(), sizeof(M) * mat.ny_ * mat.nx_);
 	}
 
-	//copy assignment
+	//copy assignment -- not safely implemented
 	void operator=(Matrix<M, NY, NX>& mat)
 	{	
 		ny_   = mat.ny_;
 		nx_   = mat.nx_;
+		memcpy(matrix_, mat.data(), sizeof(M) * mat.ny_ * mat.nx_);
 		unity_  = mat.unity_;
 		type_   = mat.type_;
-		matrix_ = new M[mat.ny_ * mat.nx_];
-		memcpy(matrix_, mat.data(), sizeof(M) * mat.ny_ * mat.nx_);
 	}
 
 	//move constructor
@@ -131,16 +135,17 @@ private:
 	void clear();
 
 	void kill() {
-		//assert(!empty()); ?fixing
+		//assert(!empty()); ? fixing
 		delete[] matrix_; 
 	}
+	
 };
 
 template <typename M, size_t NY, size_t NX>
 void Matrix<M, NY, NX>::allocate(size_t ny, size_t nx)
 {
 	matrix_ = new M[ny * nx];
-	clear(); // ?
+	clear();
 }
 
 template <typename M, size_t NY, size_t NX>

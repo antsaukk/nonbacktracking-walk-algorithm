@@ -5,7 +5,10 @@
 #include "vectorization.h"
 
 template <typename M, size_t NY, size_t NX>
-void matmul_naive(Matrix<M, NY, NX>& result, const Matrix<M, NY, NX>& mx1, const Matrix<M, NY, NX>& mx2) {
+void matmul_naive(Matrix<M, NY, NX>& result,
+					const Matrix<M, NY, NX>& mx1,
+					const Matrix<M, NY, NX>& mx2)
+{
 	assert(mx1.get_ny() == mx2.get_ny());
 	assert(mx1.get_nx() == mx2.get_nx());
 	//assert(result.get_ny() == mx2.get_nx()); more asserts
@@ -22,8 +25,11 @@ void matmul_naive(Matrix<M, NY, NX>& result, const Matrix<M, NY, NX>& mx1, const
 }
 
 template <typename M, size_t NY, size_t NX>
-void sum(Matrix<M, NY, NX>& result, const Matrix<M, NY, NX>& mx1, const Matrix<M, NY, NX>& mx2) {
-	assert(!empty());
+void sum(Matrix<M, NY, NX>& result,
+		const Matrix<M, NY, NX>& mx1,
+		const Matrix<M, NY, NX>& mx2) 
+{
+
 	assert(mx1.get_ny() == mx2.get_ny());
 	assert(mx1.get_nx() == mx2.get_nx());
 	//assert(result.get_ny() == mx2.get_nx()); more asserts
@@ -39,13 +45,16 @@ void sum(Matrix<M, NY, NX>& result, const Matrix<M, NY, NX>& mx1, const Matrix<M
 }
 
 template <typename M, size_t NY, size_t NX>
-void matmul_optimized(Matrix<M, NY, NX>& result, const Matrix<M, NY, NX>& mx1, const Matrix<M, NY, NX>& mx2) {
+void matmul_optimized(Matrix<M, NY, NX>& result,
+						const Matrix<M, NY, NX>& mx1,
+						const Matrix<M, NY, NX>& mx2)
+{
 	
 }
 
 template <typename M, size_t NY, size_t NX>
-void delta_matrix(constMatrix<M, NY, NX>& matrix)  {
-	assert(!matrix.empty());
+void delta_matrix(constMatrix<M, NY, NX>& matrix) 
+{
 
 	/*delta.resize(get_size());
 	for(size_t i = 0; i < size_; i++) {
