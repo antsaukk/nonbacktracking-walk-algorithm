@@ -87,6 +87,8 @@ public:
 		kill(); 
 	}
 
+	void fill(const M* data, size_t dsize);
+
 	inline void identity();
 
 	inline M sum_row(M start, M end);
@@ -127,8 +129,6 @@ private:
 	void allocate(size_t ny, size_t nx);
 
 	void clear();
-
-	void fill(const M* data, size_t dsize);
 
 	void kill() {
 		//assert(!empty()); ?fixing
