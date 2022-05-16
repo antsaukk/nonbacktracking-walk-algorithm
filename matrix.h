@@ -76,8 +76,6 @@ public:
 	//move assigment
 	void operator=(Matrix<M, NY, NX>&& mat)
 	{
-		//delete[] matrix_;
-		//kill();
 		swap(ny_, mat.ny_);
 		swap(nx_, mat.nx_);
 		swap(matrix_, mat.matrix_);
