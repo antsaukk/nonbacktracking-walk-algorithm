@@ -1,6 +1,6 @@
 #pragma once
 
-#include "vectorization.h"
+#include "padder.h"
 #include "util.h"
 
 #include <utility>
@@ -13,8 +13,6 @@
 #include <omp.h>
 
 using namespace std;
-
-// USE SEPARATE STRUCTURE WHICH WILL STORE AVX DATA
 
 enum TypeMatrix { 
 	EMPTY,
@@ -127,6 +125,8 @@ private:
 	M* matrix_;
 	M unity_;
 	TypeMatrix type_;
+
+	Padder<M, NY, NX> padder; // проблема в типе M
 
 	void allocate(size_t ny, size_t nx);
 
