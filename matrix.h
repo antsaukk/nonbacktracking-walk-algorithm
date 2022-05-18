@@ -31,7 +31,8 @@ public:
 	nx_(NX),
 	matrix_(nullptr),
 	unity_(1u),
-	type_(TypeMatrix::EMPTY) 
+	type_mat_(TypeMatrix::EMPTY),
+	type_avx_(TypeAVX::NONE)
 	{
 		allocate(ny_, nx_);
 	}
@@ -42,7 +43,8 @@ public:
 	nx_(mat.nx_),
 	matrix_(new M[mat.ny_ * mat.nx_]),
 	unity_(1u), 
-	type_(mat.get_type())
+	type_mat_(mat.type_mat_),
+	type_avx_(mat.type_avx_)
 	{
 		memcpy(matrix_, mat.data(), sizeof(M) * mat.ny_ * mat.nx_);
 	}
@@ -54,7 +56,7 @@ public:
 		nx_   = mat.nx_;
 		memcpy(matrix_, mat.data(), sizeof(M) * mat.ny_ * mat.nx_);
 		unity_  = mat.unity_;
-		type_   = mat.type_;
+		type_mat_   = mat.type_mat_;
 	}
 
 	//move constructor
@@ -63,12 +65,13 @@ public:
 	nx_(mat.nx_),
 	matrix_(mat.matrix_), 
 	unity_(mat.unity_),
-	type_(mat.type_)
+	type_mat_(mat.type_mat_),
+	type_avx_(mat.type_avx_)
 	{
 		mat.ny_   = 0;
 		mat.nx_   = 0;
 		mat.matrix_ = nullptr;
-		mat.type_	= TypeMatrix::EMPTY;
+		mat.type_mat_	= TypeMatrix::EMPTY;
 	}
 
 	//move assigment
@@ -78,7 +81,8 @@ public:
 		swap(nx_, mat.nx_);
 		swap(matrix_, mat.matrix_);
 		swap(unity_, mat.unity_);
-		swap(type_, mat.type_);
+		swap(type_mat_, mat.type_mat_);
+		swap(type_avx_, mat.type_avx_);
 	}
 
 	//destructor
@@ -90,6 +94,8 @@ public:
 	void fill(const M* data, size_t dsize);
 
 	inline void identity();
+
+	inline void vectorize();
 
 	inline M sum_row(M start, M end);
 
@@ -115,7 +121,9 @@ public:
 
 	inline M rowLast(size_t index);
 
-	inline const TypeMatrix get_type() const;
+	inline const TypeMatrix get_matrix_type() const;
+
+	inline const TypeAVX get_avx_type() const;
 
 	inline bool empty();
 
@@ -124,9 +132,12 @@ private:
 	size_t nx_;
 	M* matrix_;
 	M unity_;
-	TypeMatrix type_;
+	TypeMatrix type_mat_;
+	TypeAVX type_avx_;
 
-	Padder<M, NY, NX> padder; // проблема в типе M
+	Padder<float8_t,  NY, NX> padder_float8; 
+	Padder<double4_t, NY, NX> padder_double4; 
+	Padder<int8_vt,   NY, NX> padder_int8;
 
 	void allocate(size_t ny, size_t nx);
 
@@ -166,7 +177,26 @@ void Matrix<M, NY, NX>::fill(const M* data, size_t dsize)
 			set_v(y, x, val);
 		}
 	}
-	type_ = TypeMatrix::NONEMPTY;
+	type_mat_ = TypeMatrix::NONEMPTY;
+}
+
+template <typename M, size_t NY, size_t NX>
+inline void Matrix<M, NY, NX>::vectorize()
+{
+	switch(typeof(M)) {
+		case int:
+		//
+		break;
+		case float:
+		//
+		break;
+		case double:
+		//
+		break;
+		default:
+		//
+		break;
+	}
 }
 
 /*template <typename M, size_t NY, size_t NX>
@@ -254,13 +284,19 @@ inline M Matrix<M, NY, NX>::rowLast(size_t index)
 }*/
 
 template <typename M, size_t NY, size_t NX>
-inline const TypeMatrix Matrix<M, NY, NX>::get_type() const
+inline const TypeMatrix Matrix<M, NY, NX>::get_matrix_type() const
 { 
-	return type_;
+	return type_mat_;
+}
+
+template <typename M, size_t NY, size_t NX>
+inline const TypeAVX Matrix<M, NY, NX>::get_avx_type() const
+{ 
+	return type_avx_;
 }
 
 template <typename M, size_t NY, size_t NX>
 inline bool Matrix<M, NY, NX>::empty()
 { 
-	return (get_type() == TypeMatrix::EMPTY);
+	return (get_matrix_type() == TypeMatrix::EMPTY);
 }

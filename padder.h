@@ -5,7 +5,7 @@
 
 #include <memory>
 
-template <typename T, typename NY, typename NX>
+template <typename T, size_t NY, size_t NX>
 struct Padder {
 public:
 	Padder() :
@@ -45,7 +45,7 @@ private:
 	size_t nx_;
 	size_t nyy_;
 	size_t nxx_;
-	static const int padding_value_ = 8; // this is not generalized
+	static const int padding_value_ = 8; // this does not generalizes
 
 	std::unique_ptr<T, FreeAligned<T>>   vectorized_p;
 };

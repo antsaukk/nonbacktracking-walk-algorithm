@@ -41,7 +41,7 @@ inline std::unique_ptr<T, FreeAligned<T>> aligned_malloc(std::size_t n) { //std:
     return ret;
 }
 
-/*inline float4_t *float4_alloc(std::size_t n) {
+inline float4_t *float4_alloc(std::size_t n) {
     return static_cast<float4_t *>(aligned_malloc(sizeof(float4_t) * n));
 }
 
