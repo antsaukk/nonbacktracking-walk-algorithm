@@ -33,28 +33,4 @@ inline std::unique_ptr<T, FreeAligned<T>> aligned_malloc(std::size_t n) { //std:
     return std::unique_ptr<T, FreeAligned<T>>{ret};
 }
 
-/*inline void *aligned_malloc(std::size_t bytes) {
-    void *ret = nullptr;
-    if (posix_memalign(&ret, 32, bytes)) {
-        return nullptr;
-    }
-    return ret;
-}
-
-inline float4_t *float4_alloc(std::size_t n) {
-    return static_cast<float4_t *>(aligned_malloc(sizeof(float4_t) * n));
-}
-
-inline float8_t *float8_alloc(std::size_t n) {
-    return static_cast<float8_t *>(aligned_malloc(sizeof(float8_t) * n));
-}
-
-inline double4_t *double4_alloc(std::size_t n) {
-    return static_cast<double4_t *>(aligned_malloc(sizeof(double4_t) * n));
-}
-
-inline int8_vt *int8_vt_alloc(std::size_t n) {
-    return static_cast<int8_vt *>(aligned_malloc(sizeof(int8_vt) * n));
-}*/
-
 #endif

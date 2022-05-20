@@ -135,9 +135,9 @@ private:
 	TypeMatrix type_mat_;
 	TypeAVX type_avx_;
 
-	Padder<float8_t,  NY, NX> padder_float8; 
-	Padder<double4_t, NY, NX> padder_double4; 
-	Padder<int8_vt,   NY, NX> padder_int8;
+	typedef M vectorized_t __attribute__((vector_size(32)));
+
+	Padder<vectorized_t, NY, NX> vect;
 
 	void allocate(size_t ny, size_t nx);
 
@@ -182,22 +182,7 @@ void Matrix<M, NY, NX>::fill(const M* data, size_t dsize)
 
 template <typename M, size_t NY, size_t NX>
 inline void Matrix<M, NY, NX>::vectorize()
-{
-	switch(typeof(M)) {
-		case int:
-		//
-		break;
-		case float:
-		//
-		break;
-		case double:
-		//
-		break;
-		default:
-		//
-		break;
-	}
-}
+{ }
 
 /*template <typename M, size_t NY, size_t NX>
 inline void Matrix<M, NY, NX>::identity()

@@ -9,7 +9,7 @@ void test_constructor()
 	ASSERT_EQUAL(r1, v1);
 	ASSERT_EQUAL(mx1.get_ny(), 3u);
 	ASSERT_EQUAL(mx1.get_nx(), 3u);
-	ASSERT_EQUAL(mx1.get_type(), TypeMatrix::EMPTY);
+	ASSERT_EQUAL(mx1.get_matrix_type(), TypeMatrix::EMPTY);
 }
 
 void test_constructor1() 
@@ -24,7 +24,7 @@ void test_constructor1()
 	ASSERT_EQUAL(r1, v1);
 	ASSERT_EQUAL(mx1.get_ny(), 3u);
 	ASSERT_EQUAL(mx1.get_nx(), 3u);
-	ASSERT_EQUAL(mx1.get_type(), TypeMatrix::NONEMPTY);
+	ASSERT_EQUAL(mx1.get_matrix_type(), TypeMatrix::NONEMPTY);
 }
 
 void test_constructor2() 
@@ -38,7 +38,7 @@ void test_constructor2()
 	ASSERT_EQUAL(r1, v1);
 	ASSERT_EQUAL(mx1.get_ny(), 3u);
 	ASSERT_EQUAL(mx1.get_nx(), 2u);
-	ASSERT_EQUAL(mx1.get_type(), TypeMatrix::EMPTY);
+	ASSERT_EQUAL(mx1.get_matrix_type(), TypeMatrix::EMPTY);
 }
 
 void test_constructor3() 
@@ -53,7 +53,7 @@ void test_constructor3()
 	ASSERT_EQUAL(r1, v1);
 	ASSERT_EQUAL(mx1.get_ny(), 3u);
 	ASSERT_EQUAL(mx1.get_nx(), 4u);
-	ASSERT_EQUAL(mx1.get_type(), TypeMatrix::NONEMPTY);
+	ASSERT_EQUAL(mx1.get_matrix_type(), TypeMatrix::NONEMPTY);
 }
 
 void test_copy_constructor() 
@@ -73,7 +73,7 @@ void test_copy_constructor()
 	ASSERT_EQUAL(r1, r2);
 	ASSERT_EQUAL(mx1.get_ny(), mx2.get_ny());
 	ASSERT_EQUAL(mx1.get_nx(), mx2.get_nx());
-	ASSERT_EQUAL(mx1.get_type(), mx2.get_type());
+	ASSERT_EQUAL(mx1.get_matrix_type(), mx2.get_matrix_type());
 }
 
 void test_copy_constructor1() 
@@ -94,7 +94,7 @@ void test_copy_constructor1()
 	ASSERT_EQUAL(r1, r2);
 	ASSERT_EQUAL(mx1.get_ny(), mx2.get_ny());
 	ASSERT_EQUAL(mx1.get_nx(), mx2.get_nx());
-	ASSERT_EQUAL(mx1.get_type(), mx2.get_type());
+	ASSERT_EQUAL(mx1.get_matrix_type(), mx2.get_matrix_type());
 }
 
 void test_copy_constructor2() 
@@ -114,7 +114,7 @@ void test_copy_constructor2()
 	ASSERT_EQUAL(r1, r2);
 	ASSERT_EQUAL(mx1.get_ny(), mx2.get_ny());
 	ASSERT_EQUAL(mx1.get_nx(), mx2.get_nx());
-	ASSERT_EQUAL(mx1.get_type(), mx2.get_type());
+	ASSERT_EQUAL(mx1.get_matrix_type(), mx2.get_matrix_type());
 }
 
 void test_copy_constructor3() 
@@ -135,7 +135,7 @@ void test_copy_constructor3()
 	ASSERT_EQUAL(r1, r2);
 	ASSERT_EQUAL(mx1.get_ny(), mx2.get_ny());
 	ASSERT_EQUAL(mx1.get_nx(), mx2.get_nx());
-	ASSERT_EQUAL(mx1.get_type(), mx2.get_type());
+	ASSERT_EQUAL(mx1.get_matrix_type(), mx2.get_matrix_type());
 }
 
 void test_copy_assignment() 
@@ -158,7 +158,7 @@ void test_copy_assignment()
 	ASSERT_EQUAL(r1, r2);
 	ASSERT_EQUAL(mx1.get_ny(), mx2.get_ny());
 	ASSERT_EQUAL(mx1.get_nx(), mx2.get_nx());
-	ASSERT_EQUAL(mx1.get_type(), mx2.get_type());
+	ASSERT_EQUAL(mx1.get_matrix_type(), mx2.get_matrix_type());
 }
 
 void test_copy_assignment1() 
@@ -180,7 +180,7 @@ void test_copy_assignment1()
 	ASSERT_EQUAL(r1, r2);
 	ASSERT_EQUAL(mx1.get_ny(), mx2.get_ny());
 	ASSERT_EQUAL(mx1.get_nx(), mx2.get_nx());
-	ASSERT_EQUAL(mx1.get_type(), mx2.get_type());
+	ASSERT_EQUAL(mx1.get_matrix_type(), mx2.get_matrix_type());
 }
 
 void test_copy_assignment2() 
@@ -202,7 +202,7 @@ void test_copy_assignment2()
 	ASSERT_EQUAL(r1, r2);
 	ASSERT_EQUAL(mx1.get_ny(), mx2.get_ny());
 	ASSERT_EQUAL(mx1.get_nx(), mx2.get_nx());
-	ASSERT_EQUAL(mx1.get_type(), mx2.get_type());
+	ASSERT_EQUAL(mx1.get_matrix_type(), mx2.get_matrix_type());
 }
 
 void test_copy_assignment3() 
@@ -224,7 +224,7 @@ void test_copy_assignment3()
 	ASSERT_EQUAL(r1, r2);
 	ASSERT_EQUAL(mx1.get_ny(), mx2.get_ny());
 	ASSERT_EQUAL(mx1.get_nx(), mx2.get_nx());
-	ASSERT_EQUAL(mx1.get_type(), mx2.get_type());
+	ASSERT_EQUAL(mx1.get_matrix_type(), mx2.get_matrix_type());
 }
 
 void test_move_constructor() 
@@ -242,7 +242,7 @@ void test_move_constructor()
 	ASSERT_EQUAL(r1, v1);
 	ASSERT_EQUAL(mx2.get_ny(), 3u);
 	ASSERT_EQUAL(mx2.get_nx(), 3u);
-	ASSERT_EQUAL(mx2.get_type(), TypeMatrix::NONEMPTY);
+	ASSERT_EQUAL(mx2.get_matrix_type(), TypeMatrix::NONEMPTY);
 }
 
 void test_move_constructor1() 
@@ -260,7 +260,7 @@ void test_move_constructor1()
 	ASSERT_EQUAL(r1, v1);
 	ASSERT_EQUAL(mx2.get_ny(), 4u);
 	ASSERT_EQUAL(mx2.get_nx(), 4u);
-	ASSERT_EQUAL(mx2.get_type(), TypeMatrix::NONEMPTY);
+	ASSERT_EQUAL(mx2.get_matrix_type(), TypeMatrix::NONEMPTY);
 }
 
 void test_move_constructor3() 
@@ -278,7 +278,7 @@ void test_move_constructor3()
 	ASSERT_EQUAL(r1, v1);
 	ASSERT_EQUAL(mx2.get_ny(), 1u);
 	ASSERT_EQUAL(mx2.get_nx(), 10u);
-	ASSERT_EQUAL(mx2.get_type(), TypeMatrix::NONEMPTY);
+	ASSERT_EQUAL(mx2.get_matrix_type(), TypeMatrix::NONEMPTY);
 }
 
 void test_move_constructor4() 
@@ -296,7 +296,7 @@ void test_move_constructor4()
 	ASSERT_EQUAL(r1, v1);
 	ASSERT_EQUAL(mx2.get_ny(), 7u);
 	ASSERT_EQUAL(mx2.get_nx(), 3u);
-	ASSERT_EQUAL(mx2.get_type(), TypeMatrix::NONEMPTY);
+	ASSERT_EQUAL(mx2.get_matrix_type(), TypeMatrix::NONEMPTY);
 }
 
 void test_move_assignment() 
@@ -315,7 +315,7 @@ void test_move_assignment()
 	ASSERT_EQUAL(r1, v1);
 	ASSERT_EQUAL(mx2.get_ny(), 3u);
 	ASSERT_EQUAL(mx2.get_nx(), 3u);
-	ASSERT_EQUAL(mx2.get_type(), TypeMatrix::NONEMPTY);
+	ASSERT_EQUAL(mx2.get_matrix_type(), TypeMatrix::NONEMPTY);
 }
 
 void test_move_assignment1() 
@@ -334,7 +334,7 @@ void test_move_assignment1()
 	ASSERT_EQUAL(r1, v1);
 	ASSERT_EQUAL(mx2.get_ny(), 4u);
 	ASSERT_EQUAL(mx2.get_nx(), 4u);
-	ASSERT_EQUAL(mx2.get_type(), TypeMatrix::NONEMPTY);
+	ASSERT_EQUAL(mx2.get_matrix_type(), TypeMatrix::NONEMPTY);
 }
 
 void test_move_assignment2() 
@@ -353,7 +353,7 @@ void test_move_assignment2()
 	ASSERT_EQUAL(r1, v1);
 	ASSERT_EQUAL(mx2.get_ny(), 3u);
 	ASSERT_EQUAL(mx2.get_nx(), 1u);
-	ASSERT_EQUAL(mx2.get_type(), TypeMatrix::NONEMPTY);
+	ASSERT_EQUAL(mx2.get_matrix_type(), TypeMatrix::NONEMPTY);
 }
 
 void test_move_assignment3() 
@@ -372,7 +372,7 @@ void test_move_assignment3()
 	ASSERT_EQUAL(r1, v1);
 	ASSERT_EQUAL(mx2.get_ny(), 3u);
 	ASSERT_EQUAL(mx2.get_nx(), 6u);
-	ASSERT_EQUAL(mx2.get_type(), TypeMatrix::NONEMPTY);
+	ASSERT_EQUAL(mx2.get_matrix_type(), TypeMatrix::NONEMPTY);
 }
 
 /*void test_mat_mul() {

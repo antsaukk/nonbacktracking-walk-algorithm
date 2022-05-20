@@ -40,6 +40,6 @@ public:
 private:
 	size_t 			  adjacence_size_;
 	size_t 			       nbt_walks_;
-	Matrix<T, NY, NX> 				nbtw_;
+	Matrix<T, NY, NX> 			nbtw_;
 	SizeHandler<NY, NX> size_handler_;
 };
